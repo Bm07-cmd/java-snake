@@ -149,6 +149,22 @@ class Panel extends JPanel implements ActionListener, KeyListener{
         
         }
     }
+
+    public void checkGameOver(){
+        int snakeSize = this.snake.size() - 1;
+            for(int i = 0; i < this.snake.size() - 1; ++i) {
+		if(this.snake.get(snakeSize).getX() == this.snake.get(i).getX() && this.snake.get(snakeSize).getY() == this.snake.get(i).getY()) {
+			this.loop.stop();
+		    }
+		}
+		if(this.snake.get(snakeSize).getX() >= Settings.WINDOW_WIDTH || this.snake.get(snakeSize).getY() == Settings.WINDOW_HEIGHT) {
+			this.loop.stop();
+		}
+		else if(this.snake.get(snakeSize).getX() < 0 || this.snake.get(snakeSize).getY() < 0) {
+			this.loop.stop();
+		}
+            
+    }
     
     @Override
     public void paint(Graphics g){
