@@ -132,6 +132,24 @@ class Panel extends JPanel implements ActionListener, KeyListener{
     }
    
     
+    public void checkFoodCollision(){
+        int snakeSize = this.snake.size() - 1;
+        if(this.snake.get(snakeSize).x_pos == this.food.x_pos && this.snake.get(snakeSize).y_pos == this.food.y_pos ){
+            this.shuffleFoodPosition();
+            this.food.x_pos = this.random_x;
+            this.food.y_pos = this.random_y;
+        
+        int last_x = this.snake.get(snakeSize).x_pos;
+        int last_y = this.snake.get(snakeSize).y_pos;
+        
+        
+        //int last_y = this.snake.getLast().y_pos;
+        SnakeBodyRect head = new SnakeBodyRect(last_x, last_y, this.TILE_SIZE, this.TILE_SIZE, Color.GREEN);
+        this.snake.add(head);
+        
+        }
+    }
+    
     @Override
     public void paint(Graphics g){
         super.paint(g);
